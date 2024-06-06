@@ -1,10 +1,13 @@
+from sklearn.preprocessing import OneHotEncoder
 from flask import Flask, render_template, request
-from model import model
+#from model import model
+import pickle
+import numpy as np
 
 app = Flask(__name__)
 
-# Load your pre-trained machine learning model here
-model = model.load_model()  # Replace with your model loading logic
+# Load pre-trained machine learning model
+loaded_model = pickle.load(open("model.pkl", "rb"))
 
 @app.route("/")
 def index():
@@ -14,18 +17,19 @@ def index():
 def predict():
     if request.method == "POST":
         # Get user input from the form
-        input_data = request.form.get("input")
-
+        input_data = request.form.to_dict()
+        
         # Preprocess the input data for your model (if needed)
-        # ... your data preprocessing code here ...
+        features = [
+            "cap-shape", "cap-surface", "cap-color", "gill-spacing", "gill-size",
+            "gill-color", "stalk-surface-above-ring", "stalk-color-above-ring",
+            "ring-type", "bruises", "odor", "spore-print-color", "population", "habitat"
+        ]
+        # Continue preprocessing here...
+        
+        prediction = loaded_model.predict(preprocessed_data)
 
-        # Make prediction using your model
-        prediction = model.predict([preprocessed_data])  # Assuming a list input
-
-        # Format the prediction for display
-        predicted_class = prediction[0]  # Assuming single class output
-
-        return render_template("result.html", prediction=predicted_class)
+        return render_template("result.html", prediction=prediction[0])
 
     else:
         return "Something went wrong. Please try again."
