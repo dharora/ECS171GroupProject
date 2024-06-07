@@ -1,2 +1,2 @@
-# ECS171GroupProject
-Group Project for ECS171SQ24 (Rafatirad)
+# ECS171 GroupProject
+Group Project for ECS171 SQ24 (Rafatirad)
