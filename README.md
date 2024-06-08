@@ -1,2 +1,2 @@
-# ECS171 Group Project
-Group Project for ECS171 SQ24 (Rafatirad)
+# ECS 171 Group Project: Mushroom Classifier for Edibility
+Demo: https://www.youtube.com/watch?v=4DZIUkF5g1Q
