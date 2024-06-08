@@ -15,7 +15,6 @@ with tabA:
     df = pd.read_csv('test_data.csv')
     st.write("This project builds a classification model that helps determine if a \
              mushroom is dangerous to eat based on its physical characteristics.") 
-    
     st.write(df)
     st.write("The table above shows the test split of the data and is provided to \
              visualize prediction accuracy with the class feature.")
@@ -53,18 +52,17 @@ with tabB:
     feature_input['gill color']   = gill_color
 
     feature_input['stalk surface above ring'] = stalk_surface_above_ring
-    feature_input['stalk color above ring']   = stalk_surface_above_ring
+    feature_input['stalk color above ring']   = stalk_color_above_ring
     feature_input['ring type']                = ring_type
 
     feature_input['bruises']           = bruises
     feature_input['odor']              = odor
     feature_input['spore print color'] = spore_print_color
 
-    feature_input['population']        = population
-    feature_input['habitat']           = habitat
+    feature_input['population'] = population
+    feature_input['habitat']    = habitat
 
-    st.write("After specifying the mushroom's features, \
-             press the button below to determine its edibility.")
+    st.write("After specifying the mushroom's features, press the button below to determine its edibility.")
     if st.button("**Predict**"):
         X_test     = dv.transform(feature_input)
         prediction = model.predict(X_test)
